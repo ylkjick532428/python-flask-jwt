@@ -23,6 +23,11 @@ def after_request(response):
 
 def init_app(app):
 #     db.init_app(app)
+    from app.users.model import init_roles
+    init_roles()
+    
     from app.users.api import init_api
+    from app.article.api import init_article
     init_api(app)
+    init_article(app)
     return app

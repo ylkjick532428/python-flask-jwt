@@ -1,11 +1,17 @@
+'''
+Created on 2017年12月4日
+
+@author: honey
+'''
+
+import uuid
+import datetime
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Integer, Column, ForeignKey, func
 from sqlalchemy.exc import SQLAlchemyError
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.util.mysql_utility import MySqlUtil
-import uuid
-import datetime
-
 from app import app
 from flask.globals import session
 db = SQLAlchemy(app)
@@ -42,9 +48,9 @@ class UserAuths(db.Model):
     name = db.Column(db.String(255))
     password = db.Column(db.String(255))
     email = db.Column(db.String(255))
-    role = db.Column(db.Integer)
+    role_id = db.Column(db.Integer)
     register_time = db.Column(db.TIMESTAMP, default=datetime.datetime.now)
-    login_time = db.Column(db.TIMESTAMP, onupdate=datetime.datetime.now)
+    login_time = db.Column(db.TIMESTAMP) #onupdate=datetime.datetime.now
     access_token = db.Column(db.String(255))
 
     def set_password(self, password):
@@ -57,10 +63,8 @@ class UserAuths(db.Model):
         db.session.update(UserAuths.__tablename__).where(UserAuths.id==self.id).values(update_filed=update_value)
         return session_commit()
     
-    @staticmethod
-    def update_login_time(user_id, new_login_time):
-        tmp_user = UserAuths.query.filter_by(id=user_id).first()
-        tmp_user.login_time = new_login_time #datetime.datetime.now()
+    def update_login_time(self, new_login_time):
+        self.login_time = new_login_time #datetime.datetime.now()
         return db.session.commit()
     
     @staticmethod
@@ -72,9 +76,9 @@ class UserAuths(db.Model):
         generate a uuid for the user.
         """
         if username is not None:
-            print (username)
             tmp_user = UserAuths.query.filter_by(name=username).first()
             if tmp_user:
+                print (tmp_user)
                 return {"user_id": tmp_user.id, "is_have": True}
             else:
                 return {"user_id": str(uuid.uuid4()), "is_have": False}
@@ -102,11 +106,10 @@ class UserAuths(db.Model):
         if UserAuths.is_exist(username):
             return False
         else:
-            new_user = UserAuths(id=user_id, name=username, password=password_hash, email=email, role=role.id)
-            print (new_user.id, new_user.name)
+            new_user = UserAuths(id=user_id, name=username, password=password_hash, email=email, role_id=role.id)
             db.session.add(new_user)
             db.session.commit()
-        return True
+            return True
     
     @staticmethod
     def getInfo(user_id):
@@ -114,8 +117,9 @@ class UserAuths(db.Model):
             if not user_id:
                 return None
             else:
-                tmp_user = db.query.filter_by(id=user_id).first()
+                tmp_user = UserAuths.query.filter_by(id=user_id).first()
                 if tmp_user:
+                    print(tmp_user)
                     return tmp_user
         except:
             return None
@@ -130,7 +134,7 @@ class UserAuths(db.Model):
             if not user_id:
                 return None
             else:
-                tmp_user = db.query.filter_by(id=user_id).first()
+                tmp_user = UserAuths.query.filter_by(id=user_id).first()
                 if tmp_user:
                     return tmp_user.id
         except:
@@ -163,11 +167,13 @@ def init_roles():
         USER_ROLE = Role.query.filter_by(permission=Permission.USER).first()
         ADMIN_ROLE = Role.query.filter_by(permission=Permission.ADMIN).first()
         DEFAULT_ROLE = Role.query.filter_by(permission=Permission.DEFAULT).first()
+    return USER_ROLE, ADMIN_ROLE, DEFAULT_ROLE
     
 if __name__ == '__main__':
-    init_roles()
+    USER_ROLE, ADMIN_ROLE, DEFAULT_ROLE = init_roles()
+    print (USER_ROLE, ADMIN_ROLE, DEFAULT_ROLE.name)
     user_id = str(uuid.uuid4())
-    UserAuths.add(user_id, "jickd1", "jick1d", DEFAULT_ROLE, "jick@jick.com")
+    UserAuths.add(user_id, "jick", "jick", DEFAULT_ROLE, "jick@jick.com")
     print (UserAuths.getInfo(user_id))
 #     db.session.update(UserAuths.__tablename__).where(UserAuths.id==user_id).values(login_time=new_login_time)
     
@@ -175,5 +181,9 @@ if __name__ == '__main__':
     tmp = TEST.query.filter_by(id="1").first()
     tmp.name = "dddddd"
     print(tmp.id)
+    user_id="3c3e057c-8c03-43dc-b297-79a488218a94"
+    jj = UserAuths.query.filter_by(id=user_id).first()
+    kk = UserAuths.query.filter_by(id=user_id).first()
+    print (jj, kk)
 #     TEST.update().where(id="1").values(username="df")
 
