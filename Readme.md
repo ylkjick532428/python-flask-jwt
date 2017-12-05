@@ -27,8 +27,9 @@ SELECT LENGTH(Password) FROM mysql.user WHERE User = 'eigen';
 FLUSH PRIVILEGES;
 ```
 
-### navcate 初始化数据表
-eigen.sql
+### 数据库设置(mysql)
+* navcate 初始化数据表 eigen.sql
+* app.config.py 数据库配置文件
 
 ### python3 run.py 运行网站
 
