@@ -1,0 +1,10 @@
+pymysql
+flask
+cryptography
+pycrypto
+mysqlclient
+flask_migrate
+flask_script
+xmltodict
+pyjwt
+flask_session
