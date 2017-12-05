@@ -55,7 +55,7 @@ def init_article(app):
     # delete: 删除文章
     #===========================================================================
     def list():
-        articles = Article.query.all()
+        articles = Article.query.filter_by(stat=1)
         result = []
         for article in articles:
             article_time = article.modify_time if article.modify_time else article.create_time

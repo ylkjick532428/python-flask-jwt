@@ -117,7 +117,7 @@ class Auth():
                 result = common.falseReturn('', '找不到该用户信息', 110)
             else:
                 login_time = int((time.mktime(user.login_time.timetuple()) + user.login_time.microsecond/1000000.0))
-#                 print (login_time, payload['data']['login_time'], payload['data']['login_time']==login_time)
+                print (login_time, payload['data']['login_time'], payload['data']['login_time']==login_time)
                 if (login_time == payload['data']['login_time']):
                     result = common.trueReturn(user.id, '请求成功')
                 else:

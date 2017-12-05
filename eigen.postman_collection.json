@@ -1,0 +1,217 @@
+{
+	"variables": [],
+	"info": {
+		"name": "eigen",
+		"_postman_id": "e9fd12ed-c6c9-b903-7be0-c4346e7b4b6f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "登陆",
+			"request": {
+				"url": "127.0.0.1:5000/api/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jick",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "jick",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "用户",
+			"request": {
+				"url": "127.0.0.1:5000/api/user",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiM2MzZTA1N2MtOGMwMy00M2RjLWIyOTctNzlhNDg4MjE4YTk0IiwibG9naW5fdGltZSI6MTUxMjQ2NjQ3MX0sImlhdCI6MTUxMjQ2NjQ3MSwiaXNzIjoia2VuIiwiZXhwIjoxNTEyNDY2NDgxfQ.61ESVve7O-kuQD5sNYCYuIxRsfseoBfOlELWUDXKlYo",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "用户注册",
+			"request": {
+				"url": "127.0.0.1:5000/api/register",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jick",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "jick",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "文章列表",
+			"request": {
+				"url": "127.0.0.1:5000/api/article/list",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImxvZ2luX3RpbWUiOjE1MTI0NzQ1NTksImlkIjoiOGZhZGQ0ZDMtZWFlMi00YjJjLTk2NDEtZWNiMTcwOTkxMzljIn0sImlhdCI6MTUxMjQ3NDU1OSwiZXhwIjoxNTEyNDc0NTY5LCJpc3MiOiJrZW4ifQ.STR51PF7ELbJKUYhnvWiEE7QqnCvNit_a8k-jISO0e4",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "发布文章",
+			"request": {
+				"url": "127.0.0.1:5000/api/article/post",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTI0NzQ3MDcsImRhdGEiOnsibG9naW5fdGltZSI6MTUxMjQ3NDcwNywiaWQiOiI4ZmFkZDRkMy1lYWUyLTRiMmMtOTY0MS1lY2IxNzA5OTEzOWMifSwiZXhwIjoxNTEyNDc0NzE3LCJpc3MiOiJrZW4ifQ.GaotZ4CUI88YaSQtN6LADIn9_vM9jedDIKIkvWLWuD0",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "dfhdfdfiads地方还是短发的覅撒地方还是发",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "删除文章",
+			"request": {
+				"url": "127.0.0.1:5000/api/article/delete",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "jick",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTI0NzQ3MDcsImRhdGEiOnsibG9naW5fdGltZSI6MTUxMjQ3NDcwNywiaWQiOiI4ZmFkZDRkMy1lYWUyLTRiMmMtOTY0MS1lY2IxNzA5OTEzOWMifSwiZXhwIjoxNTEyNDc0NzE3LCJpc3MiOiJrZW4ifQ.GaotZ4CUI88YaSQtN6LADIn9_vM9jedDIKIkvWLWuD0",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "dfhdfdfiads地方还是短发的覅撒地方还是发",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
